@@ -27,19 +27,15 @@ class _WelcomePageState extends State<WelcomePage> {
           children: <Widget>[
             RaisedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterEmailSection()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterForm()));
               },
               child: Text('Registration'),
             ),
             RaisedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EmailPasswordForm()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginForm()));
               },
               child: Text('Login'),
             )

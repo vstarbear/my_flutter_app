@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_flutter_app/view/main/main_page.dart';
 import 'auth_service.dart';
 
 AuthService _auth = AuthService();
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-final TextEditingController _emailController = TextEditingController();
-final TextEditingController _passwordController = TextEditingController();
-User user;
-bool _success;
-String _userEmail;
 
-class RegisterEmailSection extends StatefulWidget {
+class RegisterForm extends StatefulWidget {
+  static const routeName = '/registration';
   @override
-  State<StatefulWidget> createState() => RegisterEmailSectionState();
+  State<StatefulWidget> createState() => RegisterFormState();
 }
 
-class RegisterEmailSectionState extends State<RegisterEmailSection> {
+class RegisterFormState extends State<RegisterForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  User user;
+  bool _success;
+  String _userEmail;
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -36,6 +39,10 @@ class RegisterEmailSectionState extends State<RegisterEmailSection> {
         _success = true;
         _userEmail = user.email;
       });
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (BuildContext context) => MainPage()),
+        ModalRoute.withName('/'),
+      );
     } else {
       setState(() {
         _success = true;
@@ -50,14 +57,13 @@ class RegisterEmailSectionState extends State<RegisterEmailSection> {
       body: Form(
         key: _formKey,
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextFormField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
               validator: (String value) {
                 if (value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'Please enter your Email';
                 }
                 return null;
               },
@@ -67,7 +73,7 @@ class RegisterEmailSectionState extends State<RegisterEmailSection> {
               decoration: const InputDecoration(labelText: 'Password'),
               validator: (String value) {
                 if (value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'Please enter your Password';
                 }
                 return null;
               },

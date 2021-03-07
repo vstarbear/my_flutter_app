@@ -5,12 +5,13 @@ import 'auth_service.dart';
 
 AuthService _auth = AuthService();
 
-class EmailPasswordForm extends StatefulWidget {
+class LoginForm extends StatefulWidget {
+  static const routeName = '/login';
   @override
-  State<StatefulWidget> createState() => EmailPasswordFormState();
+  State<StatefulWidget> createState() => LoginFormState();
 }
 
-class EmailPasswordFormState extends State<EmailPasswordForm> {
+class LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
