@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/auth/welcome_page.dart';
+import 'package:my_flutter_app/view/auth/welcome_page.dart';
 import 'nav_list.dart';
-import 'home_page.dart';
-import 'profile_page.dart';
-import 'auth/auth_service.dart';
+import '../home/home_page.dart';
+import '../profile/profile_page.dart';
+import '../auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'auth/registration_page.dart';
 
 AuthService _auth = AuthService();
 

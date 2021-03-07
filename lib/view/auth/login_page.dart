@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_flutter_app/main_page.dart';
+import 'package:my_flutter_app/view/main/main_page.dart';
 import 'auth_service.dart';
 
 AuthService _auth = AuthService();
@@ -57,14 +57,13 @@ class EmailPasswordFormState extends State<EmailPasswordForm> {
       body: Form(
         key: _formKey,
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextFormField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
               validator: (String value) {
                 if (value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'Please enter your Email';
                 }
                 return null;
               },
@@ -74,7 +73,7 @@ class EmailPasswordFormState extends State<EmailPasswordForm> {
               decoration: const InputDecoration(labelText: 'Password'),
               validator: (String value) {
                 if (value.isEmpty) {
-                  return 'Please enter some text';
+                  return 'Please enter your Password';
                 }
                 return null;
               },
@@ -87,18 +86,18 @@ class EmailPasswordFormState extends State<EmailPasswordForm> {
               },
               child: const Text('Submit'),
             ),
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                _success == null
-                    ? ''
-                    : (_success
-                        ? 'Successfully signed in ' + _userEmail
-                        : 'Sign in failed'),
-                style: TextStyle(color: Colors.red),
-              ),
-            )
+            // Container(
+            //   alignment: Alignment.center,
+            //   padding: const EdgeInsets.symmetric(horizontal: 16),
+            //   child: Text(
+            //     _success == null
+            //         ? ''
+            //         : (_success
+            //             ? 'Successfully signed in ' + _userEmail
+            //             : 'Sign in failed'),
+            //     style: TextStyle(color: Colors.red),
+            //   ),
+            // )
           ],
         ),
       ),
