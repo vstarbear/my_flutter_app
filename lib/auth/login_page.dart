@@ -37,6 +37,10 @@ class EmailPasswordFormState extends State<EmailPasswordForm> {
       setState(() {
         _success = true;
         _userEmail = user.email;
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => MainPage()),
+          ModalRoute.withName('/'),
+        );
       });
     } else {
       setState(() {
@@ -83,10 +87,6 @@ class EmailPasswordFormState extends State<EmailPasswordForm> {
               },
               child: const Text('Submit'),
             ),
-            if (user != null)
-              RaisedButton(onPressed: () {
-                Navigator.of(context).pushNamed(MainPage.routeName);
-              }),
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(horizontal: 16),
